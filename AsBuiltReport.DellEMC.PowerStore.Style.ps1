@@ -1,4 +1,4 @@
-# DellEMC PowerStore Default Document Style
+# Dell EMC Default Document Style
 
 # Configure document options
 DocumentOption -EnableSectionNumbering -PageSize A4 -DefaultFont 'Arial' -MarginLeftAndRight 71 -MarginTopAndBottom 71 -Orientation $Orientation
@@ -43,7 +43,7 @@ $TableDefaultProperties = @{
 TableStyle @TableDefaultProperties -Default
 TableStyle -Id 'Borderless' -HeaderStyle Normal -RowStyle Normal -BorderWidth 0
 
-# DellEMC PowerStore Cover Page Layout
+# Dell EMC Cover Page Layout
 # Header & Footer
 if ($ReportConfig.Report.ShowHeaderFooter) {
     Header -Default {
@@ -56,9 +56,10 @@ if ($ReportConfig.Report.ShowHeaderFooter) {
 }
 
 # Set position of report titles and information based on page orientation
-if (!($ReportConfig.Report.ShowCoverPageImage)) {
-    $LineCount = 5
-}
+# DELL EMC DO NOT PERMIT THE USE OF THEIR LOGO WITHOUT AUTHORIZATION
+#if (!($ReportConfig.Report.ShowCoverPageImage)) {
+#    $LineCount = 5
+#}
 if ($Orientation -eq 'Portrait') {
     BlankLine -Count 11
     $LineCount = 32 + $LineCount
@@ -67,19 +68,15 @@ if ($Orientation -eq 'Portrait') {
     $LineCount = 15 + $LineCount
 }
 
-# DellEMC Logo Image
-if ($ReportConfig.Report.ShowCoverPageImage) {
-	# Always check the vendor's branding guidelines to ensure the use of their company logo is allowed.
-	# Convert a vendor's logo image to Base64 using https://base64.guru/converter/encode/image/jpg.
-	# Specify Base64 code using the `Base64` parameter below. Size image accordingly using the `Percent` parameter. Align image to center.
-    <#
-    Try {
-    # Image -Text 'DellEMC Logo' -Align 'Center' -Percent 5 -Base64 ""
-    } Catch {
-        Write-PScriboMessage -Message ".NET Core is required for cover page image support. Please install .NET Core or disable 'ShowCoverPageImage' in the report JSON configuration file."
-    }
-    #>
-}
+# DELL EMC Logo Image
+# DELL EMC DO NOT PERMIT THE USE OF THEIR LOGO WITHOUT AUTHORIZATION
+#if ($ReportConfig.Report.ShowCoverPageImage) {
+#    Try {
+#        Image -Text 'DELL EMC Logo' -Align 'Center' -Percent 5 -Base64 ""
+#    } Catch {
+#        Write-PScriboMessage -Message ".NET Core is required for cover page image support. Please install .NET Core or disable 'ShowCoverPageImage' in the report JSON configuration file."
+#    }
+#}
 
 # Add Report Name
 Paragraph -Style Title $ReportConfig.Report.Name
